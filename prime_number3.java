@@ -2,10 +2,9 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.lang.Math;
 
-//本版本主要迭代目标是通过优化输出模块的结构加快程序的执行速度
-//经过测试发现优化输出模块对执行速度影响不大
+//本版本主要迭代目标是通过优化质数筛生成模块加快计算速度
 
-public class prime_number2 {
+public class prime_number3 {
     public static void main(String[]args){
         Scanner sc = new Scanner(System.in);
 
@@ -29,8 +28,8 @@ public class prime_number2 {
         do {
 
             for (int i : prime_use) {
-                for (int j = 2; i * j <= num; j++) {
-                    list[i * j] = 1;                                    //对prime_unused中质数过筛
+                for (int j = 2*i; j <= num; j+=i) {
+                    list[j] = 1;                                    //对prime_unused中质数过筛
                 }
             }
 
@@ -48,7 +47,7 @@ public class prime_number2 {
             }
 
             //if(prime_generated.get(prime_generated.size()-1) >= lim){
-                //break;
+            //break;
             //}                                                           //判断是否已经完成筛选
 
             prime_use = new ArrayList<>(prime_generated);               //导入新一批质数
